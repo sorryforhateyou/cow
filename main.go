@@ -40,7 +40,7 @@ func main() {
 	parseConfig(cmdLineConfig.RcFile, cmdLineConfig)
 
 	initSelfListenAddr()
-	initLog()
+	//initLog()
 	initAuth()
 	initSiteStat()
 	initPAC() // initPAC uses siteStat, so must init after site stat
