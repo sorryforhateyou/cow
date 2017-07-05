@@ -6,8 +6,10 @@ import (
 	"os/exec"
 	"runtime"
 	// "runtime/pprof"
+
 	"sync"
 	"syscall"
+	"time"
 )
 
 // var cpuprofile = flag.String("cpuprofile", "", "write cpu profile to file")
@@ -39,6 +41,8 @@ func main() {
 
 	parseConfig(cmdLineConfig.RcFile, cmdLineConfig)
 
+	go Gost(config)
+	time.Sleep(1)
 	initSelfListenAddr()
 	//initLog()
 	initAuth()

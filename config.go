@@ -76,6 +76,8 @@ type Config struct {
 
 	// not config option
 	saveReqLine bool // for http and cow parent, should save request line from client
+	ChainNodes  []string
+	ServeNodes  []string
 }
 
 var config Config
@@ -410,6 +412,14 @@ func (p configParser) ParseSshServer(val string) {
 	// add created socks server
 	p.ParseSocksParent("127.0.0.1:" + arr[1])
 	config.SshServer = append(config.SshServer, val)
+}
+
+func (p configParser) ParseServeNodes(val string) {
+	config.ServeNodes = append(config.ServeNodes, val)
+}
+
+func (p configParser) ParseChainNodes(val string) {
+	config.ChainNodes = append(config.ChainNodes, val)
 }
 
 var http struct {
